@@ -1,0 +1,35 @@
+<div class="content row">
+  <div class="image-film col">
+    <img [src]="imgFilm" class="w-100" />
+  </div>
+  <div class="desc-film col">
+    <p class="h1">{{ nomFilm }}</p>
+    <p class="text-success" *ngIf="enSalle; else afficheFalse">
+      Toujours à l'affiche
+    </p>
+    <ng-template #afficheFalse
+      ><p class="text-danger">Prochainement</p></ng-template
+    >
+    <div class="acteurs">
+      <strong>Acteur: </strong>
+      <span *ngFor="let acteur of acteurs">{{ acteur }} , </span>
+    </div>
+    <br />
+    <div *ngFor="let detail of details | keyvalue" class="details">
+      <p>
+        <strong>{{ detail.key }}</strong> : {{ detail.value }}
+      </p>
+    </div>
+    <div class="synopsis">
+      <button class="btn btn-warning" (click)="onSynopsisClick()">
+        Synopsis
+      </button>
+      <p *ngIf="showSynopsis">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta sed
+        deleniti ex voluptates praesentium cumque cupiditate nesciunt, veniam
+        quae iste dolor possimus deserunt eius quidem iure similique minus
+        molestias? Sit.
+      </p>
+    </div>
+  </div>
+</div>
